@@ -1,0 +1,9 @@
+.app {
+  /* text-align: center; */
+}
+
+.container {
+  display: block;
+  width: 1400px;
+  margin: 0px auto;
+}
