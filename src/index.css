@@ -7,7 +7,34 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* :root {
+  --color-text-dark-header: #6c5a5a;
+  --color-text--dark-bg: #342d2d;
+  --color-text-light-header: #ad9090;
+  --color-text--light-bg: #f4ebeb;
+
+} */
+
+body[data-theme='dark'] {
+  --color-text: #fff;
+  --color-bg: #000;
+  --color-text-header: #6c5a5a;
+  --color-bg-header: #342d2d;
+}
+
+body[data-theme='light'] {
+  --color-text: #000;
+  --color-bg: #cf6868;
+  --color-text-header: #ad9090;
+  --color-bg-header: #cbb3b3;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }

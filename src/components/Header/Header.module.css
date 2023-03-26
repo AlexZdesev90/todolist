@@ -1,6 +1,7 @@
 .header {
     height: 5em;
-    background-color: grey;
+    background-color: var(--color-bg-header);
+    color: var(--color-text-header);
 }
 
 .wrapper {
