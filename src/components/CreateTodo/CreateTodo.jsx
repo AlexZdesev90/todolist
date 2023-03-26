@@ -11,13 +11,7 @@ export class CreateTodo extends Component {
     }
 
     onClickAddTodoHandlier(title, description) {
-        // const newTodo = {
-        //         id: new Date(),
-        //         title: title,
-        //         description: description,  
-        //     }
             this.props.setItems(title, description)
-            // console.log(newTodo)
     }
 
     render () {

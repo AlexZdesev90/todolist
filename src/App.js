@@ -16,14 +16,11 @@ componentDidMount(){
 }
 
 handleClickTheme() {
-    // e.preventDefault()
     console.log("click")
     this.setState({theme: this.state.theme === 'light' ? 'dark' : 'light'})
     document.body.setAttribute('data-theme', this.state.theme);
 }
-  // componentDidMount(){
-  // document.body.setAttribute('data-theme', 'light')
-  // }
+
   
   render () {
 

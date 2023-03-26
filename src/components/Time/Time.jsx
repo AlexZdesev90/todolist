@@ -12,7 +12,7 @@ export class Time extends Component {
 
         return (
             <div className={classes.date}>
-              {this.getDay()}
+                {this.getDay()}
             </div>
         )
     }
