@@ -1,5 +1,30 @@
+.base {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto;
+  padding: 15px;
+  transition: background-color 0.7s;
+}
+
 .home {
-    text-align: center;
-    width: 70%;
-    margin: 0 auto;
+  background-color: var(--background-home);
+}
+
+.darkhome {
+  background-color: var(--background-dark-home);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 15px;
+  height: 40px;
+}
+
+.lengthInfo {
+  color: white;
+  z-index: 0;
+  text-shadow: 1px 1px 3px black;
 }
