@@ -1,0 +1,61 @@
+.container {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    background: var(--background-main);
+    border-radius: 100px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.input {
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    border: none;
+    padding: 0;
+    width: 0;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    margin: 7px;
+    border-radius: 50%;
+    background: #ffffff;
+}
+
+.i {
+    position: absolute;
+    color: #222222;
+}
+
+.ix {
+    position: absolute;
+    color: #222222;
+    opacity: 0;
+}
+
+.container:hover .input,
+.input:focus{
+    width: 250px;
+    padding: 1em;
+    padding-left: 1.5rem;
+}
+
+.container:hover .i {
+    opacity: 0;
+}
+
+.container:hover .ix {
+    opacity: 1;
+}

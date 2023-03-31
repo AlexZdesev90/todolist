@@ -1,0 +1,23 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    width: 59.5%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.item {
+    width: 33%;
+    margin: 2px;
+    margin-bottom: 20px;
+    background-color: rgb(172, 172, 172);
+    cursor: pointer;
+}
+
+.active {
+    background-color: rgb(83, 83, 83);
+}
+
+.item:hover {
+    background-color: rgb(136, 136, 136);
+}
