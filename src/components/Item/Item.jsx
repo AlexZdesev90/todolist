@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { Button } from "../Button/Button";
 import classes from '../Item/Item.module.css';
 import {motion} from 'framer-motion';
 import { RiEditFill, RiDeleteBin3Fill } from "react-icons/ri";
@@ -7,6 +6,7 @@ import { GiConfirmed } from "react-icons/gi";
 import { MdDoneOutline, MdRemoveDone } from "react-icons/md";
 import { TiInfoLarge } from "react-icons/ti";
 import { RxArchive } from "react-icons/rx";
+import { Button } from "../Button";
 
 
 export class Item extends Component {

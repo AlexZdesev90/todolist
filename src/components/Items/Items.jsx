@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Item } from "../Item/Item";
 
+
 export class Items extends Component {
 
     render () {

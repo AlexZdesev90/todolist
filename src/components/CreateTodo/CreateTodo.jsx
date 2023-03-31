@@ -1,9 +1,10 @@
 import {Component} from 'react';
 import { Button } from '../Button/Button';
 import classes from '../CreateTodo/CreateTodo.module.css';
-import { Input } from '../Input/Input';
+// import { Input } from '../Input/Input';
 import { IoAddCircleOutline } from "react-icons/io5";
 import { ImExit } from "react-icons/im";
+import { Input } from '../Input';
 
 export class CreateTodo extends Component {
     constructor(props) {
