@@ -1,7 +1,15 @@
 .header {
     height: 5em;
-    background-color: var(--color-bg-header);
-    color: var(--color-text-header);
+    background-color: var(--background-header);
+    color: var(--black);
+    transition: background-color 0.7s;
+}
+
+.darkheader {
+    height: 5em;
+    background-color: var(--background-dark-header);
+    color: var(--white);
+    transition: background-color 0.7s;
 }
 
 .wrapper {
@@ -9,15 +17,26 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 800px;
     height: 5em;
     margin: 0 auto;
 }
 
 .link {
-    margin-right: 15px;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    right: 0;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 35px;
+    width: 50px;
+    padding: 10px;
+    ;
     font-weight: 600;
-    color: aliceblue;
+    color: rgb(169, 152, 138);
+}
+
+.linkList {
+    color: white;
+    background-color: white;
+    font-size: 30px;
 }
