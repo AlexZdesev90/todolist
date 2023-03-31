@@ -1,38 +1,27 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import classes from './App.module.css';
 import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
+import { ThemeProvider } from './ThemeContext';
+import { Routes, Route } from 'react-router-dom';
+import { Archive } from './components/Archive/Archive';
 
 export class App extends Component {
-  constructor() {
-    super();
-    this.state = { theme: 'light' }
-    this.handleClickTheme = this.handleClickTheme.bind(this);
-}
-
-componentDidMount(){
-    console.log("dggd")
-    document.body.setAttribute('data-theme', this.state.theme);
-}
-
-handleClickTheme() {
-    console.log("click")
-    this.setState({theme: this.state.theme === 'light' ? 'dark' : 'light'})
-    document.body.setAttribute('data-theme', this.state.theme);
-}
-
-  
-  render () {
-
+  render() {
     return (
-      <div className={classes.app}>
-      <Header theme={this.state.theme} onClick={this.handleClickTheme} />
-      <div className={classes.container}>
-        <Home />
-      </div>
-    </div>
-  );
-}
+      <ThemeProvider>
+        <div className={classes.app}>
+          <Header />
+          <div className={classes.container}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/archive" element={<Archive />} />
+            </Routes>
+          </div>
+        </div>
+      </ThemeProvider>
+    );
+  }
 }
 
 export default App;
