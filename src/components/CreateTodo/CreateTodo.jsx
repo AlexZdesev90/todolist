@@ -1,5 +1,9 @@
 import {Component} from 'react';
-
+import { Button } from '../Button/Button';
+import classes from '../CreateTodo/CreateTodo.module.css';
+import { Input } from '../Input/Input';
+import { IoAddCircleOutline } from "react-icons/io5";
+import { ImExit } from "react-icons/im";
 
 export class CreateTodo extends Component {
     constructor(props) {
@@ -11,20 +15,27 @@ export class CreateTodo extends Component {
     }
 
     onClickAddTodoHandlier(title, description) {
-            this.props.setItems(title, description)
+        this.props.setItems(title, description);
+        this.setState({titleValue: ''});
+        this.setState({descriptionValue: ''});
     }
 
     render () {
         const {titleValue, descriptionValue} = this.state;
         return (
-            <div>
-                <div>
-                    <label>Title: </label><input type='text' value={titleValue} onChange={(e) => this.setState({titleValue: e.target.value})}/>
+            <div className={classes.box}>
+                <div className={classes.content}>
+                <div className={classes.wrapper}>
+                    <label className={classes.label} htmlFor="title">Title: </label>
+                    <Input id="title" type='text' value={titleValue} onChange={(e) => this.setState({titleValue: e.target.value})}/>
                 </div>
-                <div>
-                    <label>Description: </label><input type='text' value={descriptionValue} onChange={(e) => this.setState({descriptionValue: e.target.value})}/>
+                <div className={classes.wrapper}>
+                    <label className={classes.label} htmlFor="desc">Description: </label>
+                    <Input id="desc" type='text' value={descriptionValue} onChange={(e) => this.setState({descriptionValue: e.target.value})}/>
                 </div>
-                <button onClick={() => this.onClickAddTodoHandlier(titleValue, descriptionValue)}>Add</button>
+                <Button color='blue' onClick={() => this.onClickAddTodoHandlier(titleValue, descriptionValue)}><IoAddCircleOutline/></Button>
+                <Button color='blue' onClick={() => this.props.onClickExit()}><ImExit/></Button>
+                </div>
             </div>
         )
     }
