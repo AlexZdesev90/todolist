@@ -1,8 +1,11 @@
 .base {
   text-align: center;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
-  padding: 15px;
+  padding: 10px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
   transition: background-color 0.7s;
 }
 
@@ -24,7 +27,12 @@
 }
 
 .lengthInfo {
-  color: white;
+  color: grey;
   z-index: 0;
-  text-shadow: 1px 1px 3px black;
+}
+
+@media screen and (max-width: 400px) {
+  .base {
+      width: 90%;
+  }
 }

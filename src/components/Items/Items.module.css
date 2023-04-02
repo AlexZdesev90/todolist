@@ -1,0 +1,7 @@
+.items {
+  box-shadow: inset 3px 3px 10px black;
+  padding: 8px;
+  background-color: #515c63;
+  border-radius: 10px;
+  min-width: none;
+}

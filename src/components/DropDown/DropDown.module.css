@@ -1,72 +1,84 @@
 .dropdown {
-    position: relative;
-    color: white;
+  position: relative;
+  color: white;
 }
 
 .dropdown:hover > .ul {
-    opacity: 1;
-    visibility: visible;
-    height: unset;
-    transform: scaleY(1);
+  opacity: 1;
+  visibility: visible;
+  height: unset;
+  transform: scaleY(1);
 }
 
 .dropdown:hover > .label {
-    background: rgb(169, 152, 138);
+  background: rgb(91, 82, 74);
 }
 
 .label {
-    cursor: pointer;
-    background: #455A64;
-    padding: 0.8rem 1rem;
-    width: 100px;
-    display: block;
-    box-sizing: border-box;
-    transition: all 0.3s;
+  box-shadow: 2px 2px 5px black;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  cursor: pointer;
+  background: #455a64;
+  padding: 0.8rem 1rem;
+  width: 100px;
+  display: block;
+  box-sizing: border-box;
+  transition: all 0.3s;
 }
 
 .ul {
-    list-style: none;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    padding-inline-start: 0;
-    background: #546E7A;
-    opacity: 0;
-    visibility: hidden;
-    min-width: 20%;
-    height: 0;
-    position: absolute;
-    top: 48px;
-    transform-origin: top;
-    transform: scaleY(0);
-    transition: transform 0.2s;
+  box-shadow: 2px 2px 5px black;
+  list-style: none;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+  background: #546e7a;
+  opacity: 0;
+  visibility: hidden;
+  min-width: 20%;
+  height: 0;
+  position: absolute;
+  top: 48px;
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.2s;
+  z-index: 1;
 }
 
 .ul a:hover {
-    border-left: 10px solid;
-    background: #455A64;
+  box-shadow: 2px 2px 5px black;
+  border-left: 10px solid;
+  background: #455a64;
 }
 
 .ul::before {
-    content: '';
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    background: #546E7A;
-    transform: rotate(45deg);
-    top: -7px;
-    left: 20px;
-    z-index: -1;
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #546e7a;
+  transform: rotate(45deg);
+  top: -7px;
+  left: 20px;
+  z-index: -1;
 }
 
 .link {
-    color: #fff;
-    display: flex;
-    align-items: center;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    transition: all 0.3s;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: all 0.3s;
 }
 
 .current {
-    margin-right: 10px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .ul {
+    width: 100px;
+  }
 }

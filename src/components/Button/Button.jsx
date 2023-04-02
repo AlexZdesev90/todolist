@@ -1,13 +1,8 @@
-import {Component} from 'react';
-import classes from '../Button/Button.module.css';
+import { Component } from 'react';
+import ButtonRender from './ButtonRender';
 
 export class Button extends Component {
-
-    render () {
-        return (
-            <button className={[classes.btn, classes[this.props.color]].join(' ')} {...this.props}>
-                {this.props.children}
-            </button>
-        )
-    }
+  render() {
+    return <ButtonRender {...this.props} />;
+  }
 }

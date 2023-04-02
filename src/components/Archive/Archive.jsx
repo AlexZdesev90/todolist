@@ -1,23 +1,29 @@
-import { Component } from "react";
+import { Component } from 'react';
 import classes from '../Archive/Archive.module.css';
+import { Button } from '../Button';
 
 export class Archive extends Component {
-
-    // getItems = () => {
-    //     console.log(this.props.items)
-    //     return this.props.a.filter(item => item.archive === true)
-    // }
-   
-    // archived = this.getItems()
-    render () {
-        console.log(this.props.archive)
-        return (
-            <div onClick={this.props.onClickArchiveClose} className={classes.box}>
-                <div className={classes.content}>
-                    {this.props.archive?.map(arch => <div key={arch.title}>{arch.title}</div>)}
-                    gdgdgdfgd
+  render() {
+    const { isArchive, archive } = this.props;
+    return (
+      <div
+        onClick={this.props.onClickArchiveClose}
+        className={[classes.box, `${isArchive === true ? classes.show : ''}`].join(' ')}
+      >
+        <div className={classes.content}>
+          Archive
+          {archive.length === 0
+            ? 'Empty'
+            : archive?.map((item, index) => (
+                <div className={classes.wrapper} key={item.title}>
+                  {index + 1} - Title: {item.title}
+                  <div>Description: {item.description}</div>
+                  <Button>Delete</Button>
                 </div>
-            </div>
-        )
-    }
+              ))}
+          <Button>Back</Button>
+        </div>
+      </div>
+    );
+  }
 }

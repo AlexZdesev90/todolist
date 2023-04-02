@@ -1,15 +1,8 @@
-import {Component} from 'react';
-import classes from '../Input/Input.module.css';
+import { Component } from 'react';
+import { InputRender } from './InputRender';
 
 export class Input extends Component {
-
-    render () {
-        return (
-            <div>
-                    <input className={classes.input} 
-                        {...this.props}
-                    />
-                </div>
-        )
-    }
+  render() {
+    return <InputRender {...this.props} />;
+  }
 }

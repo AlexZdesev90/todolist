@@ -1,16 +1,25 @@
 .btn {
     text-align: center;
     align-items: center;
-    padding-top: 4px;
+    padding: 6px;
     border-radius: 4px;
     border: none;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 6px;
     margin-top: 10px;
     box-shadow: 2px 2px 4px rgb(57, 52, 52);
 }
 
 .btn:hover {
-    background-color: rgb(62, 57, 49);
-    color: var(--white)
+    background-color: rgb(103, 95, 84);
+    color: orange;
 }
+
+/* .size {
+    scale: 1;
+    transition: all 0.5s ease;
+}
+
+.size:hover {
+    transform: scale(1.3);
+} */

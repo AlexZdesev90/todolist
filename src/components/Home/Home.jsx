@@ -1,14 +1,6 @@
 import { Component } from 'react';
 import ThemeContext from '../../context/ThemeContext';
-import { CiMenuBurger } from 'react-icons/ci';
-import { Box } from '../Box';
-import { Archive } from '../Archive';
-import { CreateTodo } from '../CreateTodo';
-import { DropDown } from '../DropDown';
-import { Items } from '../Items';
-import { Search } from '../Search';
-import { Time } from '../Time';
-import classes from '../Home/Home.module.css';
+import { HomeRender } from './HomeRender';
 
 export class Home extends Component {
   constructor() {
@@ -17,19 +9,21 @@ export class Home extends Component {
       items: JSON.parse(localStorage.getItem('items') || '[]'),
       init: JSON.parse(localStorage.getItem('init') || '[]'),
       modal: false,
-      archive: [],
-      showArchive: false,
+      archive: JSON.parse(localStorage.getItem('archive') || '[]'),
+      isArchive: false,
     };
   }
 
   addItems = (title, description) => {
+    if(title.length <= 2) return;
     const newTodo = {
       id: new Date(),
       title: title,
       description: description,
       done: false,
-      archive: false,
+      date: new Date(),
     };
+
     console.log(this.state.items);
     this.setState({ items: this.state.items ? this.state.items.concat(newTodo) : [] });
     this.setState({ init: this.state.init ? this.state.init.concat(newTodo) : [] });
@@ -77,11 +71,11 @@ export class Home extends Component {
 
   showArchive = (e) => {
     e.preventDefault();
-    this.setState({ showArchive: true });
+    this.setState({ isArchive: true });
   };
 
   onClickArchiveClose = () => {
-    this.setState({ showArchive: false });
+    this.setState({ isArchive: false });
   };
 
   onClickExit = () => {
@@ -94,6 +88,7 @@ export class Home extends Component {
 
   idHandlier = (i) => {
     const getInit = JSON.parse(localStorage.getItem('init'));
+    // const getItem = JSON.parse(localStorage.getItem('items'));
     switch (i) {
       case 0:
         this.setState({ items: getInit });
@@ -115,57 +110,47 @@ export class Home extends Component {
   };
 
   onClickAddInArchive = (id) => {
-    const newItem = this.state.items.map(
-      (item) => (item = item.id === id ? { ...item, archive: !item.archive } : item),
-    );
-    // console.log(newItem)
     const findItem = this.state.items.find((item) => item.id === id);
-    this.setState({ items: newItem });
-    console.log(findItem);
-    this.setState(({ archive }) => {
-      return { archive: [...archive, findItem] };
-    });
+    this.setState({init: findItem})
+    this.setState({items: findItem})
+    const foundElement = this.state.items.filter((item) => item.id !== id);
+    localStorage.setItem('items', JSON.stringify([foundElement]));
+    localStorage.setItem('init', JSON.stringify([foundElement]));
+    this.setState({items: foundElement})
+    if (!this.state.archive.length) {
+      this.setState({archive: [findItem]})
+      localStorage.setItem('archive', JSON.stringify([findItem]));
+      return;
+    }
+    if (this.state.archive.some((item) => item.id === id)) {
+      return null;
+    }
+    this.setState({archive: [...this.state.archive, findItem]})
+    localStorage.setItem('archive', JSON.stringify(this.state.archive));
+    localStorage.setItem('archive', JSON.stringify(this.state.archive));
   };
 
   render() {
-    const { items, modal, showArchive, archive, init } = this.state;
     const { darkTheme } = this.context;
     return (
-      <div className={[classes.base, `${darkTheme ? classes.darkhome : classes.home}`].join(' ')}>
-        <DropDown showArchive={this.showArchive} changeModalMode={this.changeModalMode} />
-        <Time />
-        {showArchive ? (
-          <Archive archive={archive} items={items} onClickArchiveClose={this.onClickArchiveClose} />
-        ) : null}
-        {modal ? (
-          <CreateTodo onClickExit={this.onClickExit} items={items} setItems={this.addItems} />
-        ) : null}
-        <Box idHandlier={this.idHandlier} />
-        <span className={classes.lengthInfo}>You have {init.length} todos</span>
-        <br />
-        <Search
-          items={items}
-          onChangeSearchValue={this.onChangeSearchValue}
-          onClickDelete={this.onClickDelete}
-        />
-        {items.length > 0 ? (
-          <Items
-            archive={archive}
-            changeValue={this.changeValue}
-            items={items}
-            removeTodo={this.deleteTodo}
-            onClickDoneHandlier={this.onClickDoneHandlier}
-            onSetItems={this.setState}
-            onClickAddInArchive={this.onClickAddInArchive}
-          />
-        ) : (
-          <div className={classes.info}>
-            Application is clear. You need open menu &nbsp;
-            <CiMenuBurger />
-            &nbsp; and create todo !
-          </div>
-        )}
-      </div>
+      <HomeRender
+        {...this.state}
+        darkTheme={darkTheme}
+        showArchive={this.showArchive}
+        onClickArchiveClose={this.onClickArchiveClose}
+        onClickExit={this.onClickExit}
+        addItems={this.addItems}
+        idHandlier={this.idHandlier}
+        changeModalMode={this.changeModalMode}
+        onChangeSearchValue={this.onChangeSearchValue}
+        onClickDelete={this.onClickDelete}
+        changeValue={this.changeValue}
+        deleteTodo={this.deleteTodo}
+        onClickDoneHandlier={this.onClickDoneHandlier}
+        onClickAddInArchive={this.onClickAddInArchive}
+        onSetItems={this.setState}
+        // archive={this.state.archive}
+      />
     );
   }
 }

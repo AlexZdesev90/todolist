@@ -1,7 +1,5 @@
 import { Component } from "react";
-import { BsSearch } from "react-icons/bs";
-import { TfiClose } from "react-icons/tfi";
-import classes from '../Search/Search.module.css';
+import { SearchRender } from './SearchRender';
 
 export class Search extends Component {
     constructor(props) {
@@ -19,17 +17,11 @@ export class Search extends Component {
     this.setState({searchValue: ''});
     this.props.onClickDelete()
     }
+
     render () {
+        const {searchValue} = this.state;
         return (
-            <div className={classes.container}>
-                <div className={classes.row}>
-                    <input type="text" value={this.state.searchValue} onChange={(e) => this.onHandlier(e)} className={classes.input}/>
-                    <div onClick={this.onClickHandlier} className={classes.icon}>
-                        <BsSearch className={classes.i}/>
-                        <TfiClose className={classes.ix}/>
-                    </div>
-                </div>
-            </div>
+            <SearchRender searchValue={searchValue} onHandlier={this.onHandlier} onClickHandlier={this.onClickHandlier}/>
         )
     }
 }
