@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/todolist/static/css/main.7676496d.css",
-    "main.js": "/todolist/static/js/main.53361923.js",
-    "static/media/20769895_Sandy_Gen-03_Single-07.jpg": "/todolist/static/media/20769895_Sandy_Gen-03_Single-07.0a07b296e571b2c5d5f9.jpg",
-    "static/media/10124677_4341138.jpg": "/todolist/static/media/10124677_4341138.f5993bfe54f28d46d323.jpg",
-    "static/media/20124598_6218342.jpg": "/todolist/static/media/20124598_6218342.88fbb08df525cf388f92.jpg",
-    "index.html": "/todolist/index.html",
-    "main.7676496d.css.map": "/todolist/static/css/main.7676496d.css.map",
-    "main.53361923.js.map": "/todolist/static/js/main.53361923.js.map"
+    "main.css": "/todolist999/static/css/main.d833be7f.css",
+    "main.js": "/todolist999/static/js/main.53361923.js",
+    "static/media/20769895_Sandy_Gen-03_Single-07.jpg": "/todolist999/static/media/20769895_Sandy_Gen-03_Single-07.0a07b296e571b2c5d5f9.jpg",
+    "static/media/10124677_4341138.jpg": "/todolist999/static/media/10124677_4341138.f5993bfe54f28d46d323.jpg",
+    "static/media/20124598_6218342.jpg": "/todolist999/static/media/20124598_6218342.88fbb08df525cf388f92.jpg",
+    "index.html": "/todolist999/index.html",
+    "main.d833be7f.css.map": "/todolist999/static/css/main.d833be7f.css.map",
+    "main.53361923.js.map": "/todolist999/static/js/main.53361923.js.map"
   },
   "entrypoints": [
-    "static/css/main.7676496d.css",
+    "static/css/main.d833be7f.css",
     "static/js/main.53361923.js"
   ]
 }
