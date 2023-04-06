@@ -13,9 +13,10 @@
     margin: 2px;
     padding-bottom: 5px;
     margin-bottom: 20px;
-    background-color: rgb(118, 117, 117);
+    background-color: #455a64;
     cursor: pointer;
     border-radius: 8px;
+    transition: color 0.35s ease;
 }
 
 .item:hover {

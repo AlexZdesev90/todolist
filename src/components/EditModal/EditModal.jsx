@@ -9,7 +9,6 @@ export class EditModal extends Component {
       editTitleValue: this.props.editTitleValue,
       editDescriptionValue: this.props.editDescriptionValue,
     };
-    // console.log(this.props)
   }
 
   onChangeTitleValue = (e) => {
