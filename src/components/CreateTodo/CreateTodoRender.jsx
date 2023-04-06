@@ -3,7 +3,6 @@ import { Button } from '../Button/Button';
 import classes from '../CreateTodo/CreateTodo.module.css';
 import { IoAddCircleOutline } from 'react-icons/io5';
 import { ImExit } from 'react-icons/im';
-// import { Input } from '../Input';
 
 const CreateTodoRender = (props) => {
   const {
@@ -18,26 +17,26 @@ const CreateTodoRender = (props) => {
     <div className={classes.box}>
       <div className={classes.content}>
         <div className={classes.wrapper}>
-          <label className={classes.label} htmlFor="title">
+          <label className={classes.label} htmlFor='title'>
             <div className={classes.textAreaWrapper}>Title: </div>
           </label>
           <textarea
             className={classes.textarea}
-            id="title"
-            type="text"
+            id='title'
+            type='text'
             value={titleValue}
             onChange={(e) => changeTitle(e.target.value)}
             maxLength={100}
           />
         </div>
         <div className={classes.wrapper}>
-          <label className={classes.label} htmlFor="desc">
+          <label className={classes.label} htmlFor='desc'>
             <div className={classes.textAreaWrapper}>Description: </div>
           </label>
           <textarea
             className={classes.textarea}
-            id="desc"
-            type="text"
+            id='desc'
+            type='text'
             value={descriptionValue}
             onChange={(e) => changeDescription(e.target.value)}
             maxLength={100}

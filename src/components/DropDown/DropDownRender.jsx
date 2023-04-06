@@ -17,21 +17,21 @@ export const DropDownRender = (props) => {
       <ul className={classes.ul}>
         <li onClick={(e) => changeModalMode(e)}>
           <i className={classes.current}></i>
-          <a className={classes.link} href="/">
+          <a className={classes.link} href='/'>
             <CgAddR />
             &nbsp;Add todo
           </a>
         </li>
         <li onClick={(e) => showArchive(e)}>
           <i className={classes.current}></i>
-          <a className={classes.link} href="/">
+          <a className={classes.link} href='/'>
             <RxArchive />
             &nbsp;Archive
           </a>
         </li>
         <li>
           <i className={classes.current}></i>
-          <Link className={classes.link} to="/info">
+          <Link className={classes.link} to='/info'>
             <BsInfoSquare />
             &nbsp;Info
           </Link>

@@ -4,7 +4,7 @@ import classes from '../Items/Items.module.css';
 
 export class Items extends Component {
   render() {
-    const { items, init, onClickAddInArchive } = this.props;
+    const { items, onClickAddInArchive } = this.props;
     return (
       <div className={classes.items}>
         {items?.map((item) => (

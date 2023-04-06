@@ -21,9 +21,7 @@ export class Item extends Component {
   }
 
   getDate = (date) => {
-    console.log(date);
     const data = new Date(date);
-    console.log(data);
     const year = data.getFullYear();
     const month = data.getMonth();
     const day = data.getDate();
@@ -34,21 +32,22 @@ export class Item extends Component {
   };
 
   showInfo = (date) => {
-    console.log(date);
     this.setState(({ info }) => ({ info: !info }));
     this.getDate(date);
   };
 
   editHandlier = (title, description, id) => {
-    this.setState({editTitleValue: title})
-    // this.setState({editTitleValue: title})
-    this.setState({editDescriptionValue: description})
-    const items = JSON.parse(localStorage.getItem('items'))
-    const newItems = items.map(item => item = item.id === id ? { ...item, title: title, description: description} : item);
-    localStorage.setItem('init', JSON.stringify(newItems))
-    localStorage.setItem('items', JSON.stringify(newItems))
-    this.setState({edit: false})
-  }
+    this.setState({ editTitleValue: title });
+    this.setState({ editDescriptionValue: description });
+    const items = JSON.parse(localStorage.getItem('items'));
+    const newItems = items.map(
+      (item) =>
+        (item = item.id === id ? { ...item, title: title, description: description } : item),
+    );
+    localStorage.setItem('init', JSON.stringify(newItems));
+    localStorage.setItem('items', JSON.stringify(newItems));
+    this.setState({ edit: false });
+  };
 
   render() {
     const { id, done, date, onClickAddInArchive } = this.props;
@@ -91,7 +90,7 @@ export class Item extends Component {
             <Button onClick={() => this.props.removeTodo(id)}>
               <RiDeleteBin3Fill />
             </Button>
-            <Button onClick={() => this.setState({ edit: !this.state.edit })} color="yellow">
+            <Button onClick={() => this.setState({ edit: !this.state.edit })}>
               {this.state.edit ? <GiConfirmed /> : <RiEditFill />}
             </Button>
             <Button onClick={() => this.props.onClickDoneHandlier(id)}>
@@ -100,13 +99,7 @@ export class Item extends Component {
             <Button onClick={() => this.showInfo(date)}>
               <TiInfoLarge />
             </Button>
-            {this.state.info ? (
-              <div className={classes.info}>
-                {this.getDate(date)}
-              </div>
-            ) : (
-              ''
-            )}
+            {this.state.info ? <div className={classes.info}>{this.getDate(date)}</div> : ''}
             <Button onClick={() => onClickAddInArchive(id)}>
               <RxArchive />
             </Button>

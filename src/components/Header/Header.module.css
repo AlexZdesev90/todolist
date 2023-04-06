@@ -12,6 +12,11 @@
 
 }
 
+.author {
+    margin-right: 30px;
+    color: rgb(189, 165, 148);
+}
+
 .darkheader {
     background-color: var(--background-dark-header);
     color: grey;
@@ -44,7 +49,7 @@
 }
 
 .linkList {
-    color: white;
+    color: var(--white);
     background-color: rgb(231, 221, 221);
     font-size: 30px;
     margin-left: 660px;

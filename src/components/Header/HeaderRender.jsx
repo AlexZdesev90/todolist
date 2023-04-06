@@ -10,14 +10,15 @@ export const HeaderRender = (props) => {
       <ThemeSwitcher />
       <div className={classes.wrapper}>
         <div>
-          
-          <span className={classes.title}><FcTodoList className={classes.linkList} />{' '}TODO LIST</span>
+          <span className={classes.title}>
+            <FcTodoList className={classes.linkList} /> TODO LIST
+          </span>
         </div>
         <div>
           <a className={classes.link} href="https://github.com/AlexZdesev90">
             <ImGithub />
           </a>
-          <span style={{ marginRight: '30px', color: 'rgb(131, 108, 90)' }}>Zdesev Alexandr</span>
+          <span className={classes.author}>Zdesev Alexandr</span>
         </div>
       </div>
     </div>
