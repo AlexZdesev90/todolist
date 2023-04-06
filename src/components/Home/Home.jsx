@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import ThemeContext from '../../context/ThemeContext';
 import { HomeRender } from './HomeRender';
+import debounce from "lodash.debounce";
 
 export class Home extends Component {
   constructor() {
@@ -15,6 +16,7 @@ export class Home extends Component {
   }
 
   addItems = (title, description) => {
+    console.log("addItems")
     if(title.length <= 2) return;
     const newTodo = {
       id: new Date(),
@@ -23,10 +25,10 @@ export class Home extends Component {
       done: false,
       date: new Date(),
     };
-
-    console.log(this.state.items);
-    this.setState({ items: this.state.items ? this.state.items.concat(newTodo) : [] });
-    this.setState({ init: this.state.init ? this.state.init.concat(newTodo) : [] });
+    // this.setState({ items: this.state.items ? this.state.items.concat(newTodo) : [] });
+    // this.setState({ init: this.state.init ? this.state.init.concat(newTodo) : [] });
+    this.setState({ items: this.state.items.concat(newTodo)});
+    this.setState({ init: this.state.init.concat(newTodo)});
     localStorage.setItem('items', JSON.stringify([...this.state.items, newTodo]));
     localStorage.setItem('init', JSON.stringify([...this.state.items, newTodo]));
     this.setState({ modal: false });
@@ -40,14 +42,14 @@ export class Home extends Component {
     this.setState({ init: newTodos });
   };
 
-  onChangeSearchValue = (value) => {
+  onChangeSearchValue = debounce((value) => {
     const searchedItems = this.state.init.filter((item) =>
       item.title.toLowerCase().includes(value.toLowerCase()),
     );
     this.setState({ items: searchedItems });
-  };
+  }, 500);
 
-  onClickDelete = () => {
+  onClickSearchDelete = () => {
     const getInit = JSON.parse(localStorage.getItem('init'));
     this.setState({ items: getInit });
     this.setState({ init: getInit });
@@ -63,6 +65,12 @@ export class Home extends Component {
     localStorage.setItem('items', JSON.stringify(newItems));
     localStorage.setItem('init', JSON.stringify(newItems));
   };
+
+  onChangeArchive = (value) => {
+    // localStorage.setItem('archive', JSON.stringify(value))
+    this.setState({archive: value});
+
+  }
 
   changeModalMode = (e) => {
     e.preventDefault();
@@ -111,23 +119,13 @@ export class Home extends Component {
 
   onClickAddInArchive = (id) => {
     const findItem = this.state.items.find((item) => item.id === id);
-    this.setState({init: findItem})
-    this.setState({items: findItem})
-    const foundElement = this.state.items.filter((item) => item.id !== id);
-    localStorage.setItem('items', JSON.stringify([foundElement]));
-    localStorage.setItem('init', JSON.stringify([foundElement]));
-    this.setState({items: foundElement})
-    if (!this.state.archive.length) {
-      this.setState({archive: [findItem]})
-      localStorage.setItem('archive', JSON.stringify([findItem]));
-      return;
-    }
-    if (this.state.archive.some((item) => item.id === id)) {
-      return null;
-    }
+    localStorage.setItem('archive', JSON.stringify([...this.state.archive, findItem]));
     this.setState({archive: [...this.state.archive, findItem]})
-    localStorage.setItem('archive', JSON.stringify(this.state.archive));
-    localStorage.setItem('archive', JSON.stringify(this.state.archive));
+    const foundElement = this.state.items.filter((item) => item.id !== id);
+    localStorage.setItem('items', JSON.stringify(foundElement));
+    localStorage.setItem('init', JSON.stringify(foundElement));
+    this.setState({items: foundElement})
+    this.setState({init: foundElement})
   };
 
   render() {
@@ -143,12 +141,13 @@ export class Home extends Component {
         idHandlier={this.idHandlier}
         changeModalMode={this.changeModalMode}
         onChangeSearchValue={this.onChangeSearchValue}
-        onClickDelete={this.onClickDelete}
+        onClickSearchDelete={this.onClickSearchDelete}
         changeValue={this.changeValue}
         deleteTodo={this.deleteTodo}
         onClickDoneHandlier={this.onClickDoneHandlier}
         onClickAddInArchive={this.onClickAddInArchive}
         onSetItems={this.setState}
+        onChangeArchive={this.onChangeArchive}
         // archive={this.state.archive}
       />
     );

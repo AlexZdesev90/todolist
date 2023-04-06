@@ -4,7 +4,7 @@ import classes from '../Items/Items.module.css';
 
 export class Items extends Component {
   render() {
-    const { items, init } = this.props;
+    const { items, init, onClickAddInArchive } = this.props;
     return (
       <div className={classes.items}>
         {items?.map((item) => (
@@ -15,7 +15,7 @@ export class Items extends Component {
             {...item}
             removeTodo={this.props.removeTodo}
             onClickDoneHandlier={this.props.onClickDoneHandlier}
-            onClickAddInArchive={this.props.onClickAddInArchive}
+            onClickAddInArchive={onClickAddInArchive}
           />
         ))}
       </div>

@@ -20,16 +20,6 @@ export class Item extends Component {
     };
   }
 
-  // onChangeTextValue = (event) => {
-  //   const value = event.target.value;
-  //   console.log(value);
-  // };
-
-  // onChangeDescriptionValue = (event) => {
-  //   const value = event.target.value;
-  //   console.log(value);
-  // };
-
   getDate = (date) => {
     console.log(date);
     const data = new Date(date);
@@ -50,18 +40,18 @@ export class Item extends Component {
   };
 
   editHandlier = (title, description, id) => {
-    this.setState({edit: false})
     this.setState({editTitleValue: title})
+    // this.setState({editTitleValue: title})
     this.setState({editDescriptionValue: description})
-    const items = JSON.parse(localStorage.getItem('init'))
-    console.log(this.props)
-    const newItems = items.map(item => item = item.id === id ? { ...item, title: this.state.editTitleValue, description: this.state.editDescriptionValue} : item);
-    console.log(newItems)
+    const items = JSON.parse(localStorage.getItem('items'))
+    const newItems = items.map(item => item = item.id === id ? { ...item, title: title, description: description} : item);
     localStorage.setItem('init', JSON.stringify(newItems))
+    localStorage.setItem('items', JSON.stringify(newItems))
+    this.setState({edit: false})
   }
 
   render() {
-    const { id, done, date } = this.props;
+    const { id, done, date, onClickAddInArchive } = this.props;
     return (
       <motion.div
         key={id}
@@ -111,13 +101,13 @@ export class Item extends Component {
               <TiInfoLarge />
             </Button>
             {this.state.info ? (
-              <span className={classes.info}>
-                {window.screen.width >= 1110 ? `Todo created - ${this.getDate(date)}` : ''}
-              </span>
+              <div className={classes.info}>
+                {this.getDate(date)}
+              </div>
             ) : (
               ''
             )}
-            <Button onClick={() => this.props.onClickAddInArchive(id)}>
+            <Button onClick={() => onClickAddInArchive(id)}>
               <RxArchive />
             </Button>
           </div>

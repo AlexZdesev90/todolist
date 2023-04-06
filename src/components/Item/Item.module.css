@@ -81,8 +81,10 @@
 
 .info {
     position: absolute;
-    width: 500px;
-    right: 550px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width:160px;
     background-color: transparent;
     color: cornsilk;
 }

@@ -22,18 +22,19 @@ export const HomeRender = ({
   idHandlier,
   changeModalMode,
   onChangeSearchValue,
-  onClickDelete,
+  onClickSearchDelete,
   changeValue,
   deleteTodo,
   onClickDoneHandlier,
   onClickAddInArchive,
   onSetItems,
+  onChangeArchive
 }) => {
   return (
     <div className={[classes.base, `${darkTheme ? classes.darkhome : classes.home}`].join(' ')}>
       <DropDown showArchive={showArchive} changeModalMode={changeModalMode} />
       <Time />
-      <Archive showArchive={showArchive} archive={archive} isArchive={isArchive} items={items} onClickArchiveClose={onClickArchiveClose} />
+      <Archive showArchive={showArchive} archive={archive} isArchive={isArchive} items={items} onClickArchiveClose={onClickArchiveClose} onChangeArchive={onChangeArchive}/>
 
       {modal ? <CreateTodo onClickExit={onClickExit} items={items} setItems={addItems} /> : null}
       <Box idHandlier={idHandlier} />
@@ -42,12 +43,13 @@ export const HomeRender = ({
       <Search
         items={items}
         onChangeSearchValue={onChangeSearchValue}
-        onClickDelete={onClickDelete}
+        onClickDelete={onClickSearchDelete}
       />
       {items.length > 0 ? (
         <Items
           changeValue={changeValue}
           items={items}
+          init={init}
           removeTodo={deleteTodo}
           onClickDoneHandlier={onClickDoneHandlier}
           onSetItems={onSetItems}
