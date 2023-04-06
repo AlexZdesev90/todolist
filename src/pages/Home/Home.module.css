@@ -1,0 +1,38 @@
+.base {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px;
+  box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  transition: background-color 0.7s;
+}
+
+.home {
+  background-color: var(--background-home);
+}
+
+.darkhome {
+  background-color: var(--background-dark-home);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-top: 15px;
+  height: 40px;
+}
+
+.lengthInfo {
+  color: grey;
+  z-index: 0;
+}
+
+@media screen and (max-width: 400px) {
+  .base {
+      width: 90%;
+  }
+}
