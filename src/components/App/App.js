@@ -3,7 +3,7 @@ import classes from './App.module.css';
 import { ThemeProvider } from '../../context/ThemeContext';
 import { Routes, Route } from 'react-router-dom';
 import { Header } from '../Header';
-import { Info } from '../Info/Info';
+import {Info} from '../../pages/Info/Info';
 import { Home } from '../../pages/Home/Home';
 
 export class App extends Component {

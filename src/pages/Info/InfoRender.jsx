@@ -1,13 +1,15 @@
 import React from 'react';
-import { Button } from '../Button';
 import classes from '../Info/Info.module.css';
 import { Link } from 'react-router-dom';
+import { Button } from '../../components/Button';
 
 export const InfoRender = (props) => {
-  const {darkTheme} = props
+  const { darkTheme } = props;
   return (
-    <div className={[classes.base, `${darkTheme ? classes.wrapperDark : classes.wrapper}`].join(' ')}>
-       <div className={darkTheme ? classes.darkheader : classes.header}></div>
+    <div
+      className={[classes.base, `${darkTheme ? classes.wrapperDark : classes.wrapper}`].join(' ')}
+    >
+      <div className={darkTheme ? classes.darkheader : classes.header}></div>
       <h2>What is a ToDo List?</h2>
       <p>
         What is a ToDo List? The definition is a simple one. It’s a list of tasks you need to
