@@ -37,7 +37,7 @@ export const HomeRender = ({
       <Archive showArchive={showArchive} archive={archive} isArchive={isArchive} items={items} onClickArchiveClose={onClickArchiveClose} onChangeArchive={onChangeArchive}/>
 
       {modal ? <CreateTodo onClickExit={onClickExit} items={items} setItems={addItems} /> : null}
-      <Box idHandlier={idHandlier} />
+      <Box idHandlier={idHandlier} items={init} />
       <span className={classes.lengthInfo}>You have {init.length} todos</span>
       <br />
       <Search
@@ -45,7 +45,7 @@ export const HomeRender = ({
         onChangeSearchValue={onChangeSearchValue}
         onClickDelete={onClickSearchDelete}
       />
-      {items.length > 0 ? (
+      {items && items.length > 0 ? (
         <Items
           changeValue={changeValue}
           items={items}

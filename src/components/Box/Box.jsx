@@ -17,8 +17,10 @@ export class Box extends Component {
 
   render() {
     const { activeIndex } = this.state;
+    const { items } = this.props;
     return (
       <BoxRender
+        items={items}
         activeIndex={activeIndex}
         boxes={this.boxes}
         activeHandlier={this.activeHandlier}

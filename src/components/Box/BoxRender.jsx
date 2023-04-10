@@ -2,17 +2,20 @@ import React from 'react';
 import classes from '../Box/Box.module.css';
 
 function BoxRender(props) {
-  const { activeIndex, boxes, activeHandlier } = props;
+  const { items, activeIndex, boxes, activeHandlier } = props;
+  if( items.length === 0 ) {
+    return null;
+  }
   return (
     <div className={classes.wrapper}>
       {boxes.map((box, indx) => (
-        <div
+        <button 
           key={box}
           onClick={() => activeHandlier(indx)}
           className={[classes.item, `${indx === activeIndex ? classes.active : ''}`].join(' ')}
         >
           {box}
-        </div>
+        </button>
       ))}
     </div>
   );

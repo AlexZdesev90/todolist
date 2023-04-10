@@ -1,6 +1,7 @@
 .dropdown {
   position: relative;
   color: white;
+  width: 100px;
 }
 
 .dropdown:hover > .ul {
